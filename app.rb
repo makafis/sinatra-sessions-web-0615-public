@@ -1,5 +1,5 @@
 require_relative 'config/environment'
-
+require 'pry'
 class App < Sinatra::Base
   configure do
     enable :sessions unless test?
@@ -19,8 +19,10 @@ class App < Sinatra::Base
   end
 
   get '/set' do
-    # Implement your solution here!
-
+    # session = {
+    #   :foo => "hello"
+    # }
+    session[:foo] = 'hello'
     if session[:foo] == 'hello'
       "Session value set. It's currently set to #{session[:foo]}"
       redirect '/fetch'
@@ -39,6 +41,7 @@ class App < Sinatra::Base
 
   get '/set_session' do
     # Implement your solution here!	
+    session[:id] = 1
 
     if session[:id] == 1
       "Session ID set. It's currently set to #{session[:id]}."
